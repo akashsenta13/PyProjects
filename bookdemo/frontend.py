@@ -55,12 +55,14 @@ def delete_cmd():
 
 
 def update_cmd():
-    backend.update(selected[0], selected[1], selected[2], selected[3],
-                   selected[4])
+    backend.update(selected[0], title_text.get(), author_text.get(),
+                   year_text.get(), isbn_text.get())
     view_cmd()
 
 
 window = Tk()
+
+window.wm_title('BookStore')
 
 l1 = Label(window, text='Title')
 l1.grid(row=0, column=0)
@@ -118,7 +120,7 @@ b4.grid(row=5, column=3)
 b5 = Button(window, text='Delete', width=12, command=delete_cmd)
 b5.grid(row=6, column=3)
 
-b6 = Button(window, text='Close', width=12)
+b6 = Button(window, text='Close', width=12, command=window.destroy)
 b6.grid(row=7, column=3)
 
 window.mainloop()
